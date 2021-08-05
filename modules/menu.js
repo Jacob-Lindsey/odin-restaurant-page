@@ -4,10 +4,12 @@ const drinks = document.createElement('li');
 const appetizers = document.createElement('li');
 const entrees = document.createElement('li');
 const deserts = document.createElement('li');
+const scrollToTopWrapper = document.createElement('li');
 const drinksLink = document.createElement('a');
 const appetizersLink = document.createElement('a');
 const entreesLink = document.createElement('a');
 const desertsLink = document.createElement('a');
+const scrollToTopLink = document.createElement('a');
 const menuContent = document.createElement('div');
 const menuSeperatorDrinks = document.createElement('div');
 const menuSeperatorAppetizers = document.createElement('div');
@@ -17,6 +19,16 @@ const menuSeperatorDrinksH2 = document.createElement('h2');
 const menuSeperatorAppetizersH2 = document.createElement('h2');
 const menuSeperatorEntreesH2 = document.createElement('h2');
 const menuSeperatorDesertsH2 = document.createElement('h2');
+const rootElement = document.documentElement;
+
+function scrollToTop() {
+    rootElement.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+}
+
+scrollToTopLink.addEventListener("click", scrollToTop);
 
 function createMenuItem(title, price, details) {
 
@@ -52,15 +64,32 @@ function createMenuCategories() {
     appetizers.appendChild(appetizersLink);
     entrees.appendChild(entreesLink);
     deserts.appendChild(desertsLink);
+    scrollToTopWrapper.appendChild(scrollToTopLink);
     menuCat.appendChild(drinks);
     menuCat.appendChild(appetizers);
     menuCat.appendChild(entrees);
     menuCat.appendChild(deserts);
+    menuCat.appendChild(scrollToTopWrapper);
 
     drinksLink.innerHTML = "Drinks";
     appetizersLink.innerHTML = "Appetizers";
     entreesLink.innerHTML = "Entrees";
     desertsLink.innerHTML = "Deserts";
+
+    drinksLink.setAttribute('href','#drinks-section');
+    appetizersLink.setAttribute('href','#appetizers-section');
+    entreesLink.setAttribute('href','#entrees-section');
+    desertsLink.setAttribute('href','#deserts-section');
+    drinksLink.setAttribute('title','Jump to Drinks');
+    appetizersLink.setAttribute('title','Jump to Appetizers');
+    entreesLink.setAttribute('title','Jump to Entrees');
+    desertsLink.setAttribute('title','Jump to Deserts');
+    scrollToTopWrapper.classList.add('scroll-to-top-wrapper');
+    scrollToTopLink.setAttribute('id','scroll-to-top-link');
+    scrollToTopLink.setAttribute('title','Back to Top');
+    scrollToTopLink.classList.add('icon-chevron-up');
+    scrollToTopLink.setAttribute('aria-label','Scroll to Top');
+    // scrollToTopLink.setAttribute('href','#top');
 
     drinks.setAttribute('id','drinks');
     appetizers.setAttribute('id','appetizers');
@@ -76,11 +105,9 @@ function createMenuPage() {
     menuContent.classList.add('menu-content');
     menuPage.classList.add('page');
     menuPage.setAttribute('id','menu-page');
-    const menuCatItem = createMenuCategories();
-    menuPage.appendChild(menuCatItem);
-    
-
+ 
     menuSeperatorDrinks.classList.add('menu-seperator');
+    menuSeperatorDrinks.setAttribute('id','drinks-section');
     menuSeperatorDrinks.appendChild(menuSeperatorDrinksH2);
     menuSeperatorDrinksH2.innerHTML = 'DRINKS';
     menuContent.appendChild(menuSeperatorDrinks);
@@ -91,6 +118,7 @@ function createMenuPage() {
     });
 
     menuSeperatorAppetizers.classList.add('menu-seperator');
+    menuSeperatorAppetizers.setAttribute('id','appetizers-section');
     menuSeperatorAppetizers.appendChild(menuSeperatorAppetizersH2);
     menuSeperatorAppetizersH2.innerHTML = 'APPETIZERS';
     menuContent.appendChild(menuSeperatorAppetizers);
@@ -101,6 +129,7 @@ function createMenuPage() {
     });
 
     menuSeperatorEntrees.classList.add('menu-seperator');
+    menuSeperatorEntrees.setAttribute('id','entrees-section');
     menuSeperatorEntrees.appendChild(menuSeperatorEntreesH2);
     menuSeperatorEntreesH2.innerHTML = 'ENTREES';
     menuContent.appendChild(menuSeperatorEntrees);
@@ -111,6 +140,7 @@ function createMenuPage() {
     });
 
     menuSeperatorDeserts.classList.add('menu-seperator');
+    menuSeperatorDeserts.setAttribute('id','deserts-section');
     menuSeperatorDeserts.appendChild(menuSeperatorDesertsH2);
     menuSeperatorDesertsH2.innerHTML = 'DESERTS';
     menuContent.appendChild(menuSeperatorDeserts);
@@ -122,9 +152,11 @@ function createMenuPage() {
 
     menuPage.appendChild(menuContent);
 
-    const page = menuPage;
+    const menuCatItem = createMenuCategories();
+    menuPage.appendChild(menuCatItem);
 
-    return (page);
+
+    return (menuPage);
 
 }
 
@@ -240,7 +272,7 @@ const desertList = [
     },
 ];
 
-export const page = createMenuPage();
+export const menuPageTemplate = createMenuPage();
 
 
 
