@@ -2,6 +2,7 @@
   "name": "odin-restaurant-page",
   "version": "1.0.0",
   "description": "TOP Restaurant Page Project",
+  "homepage": "https://jacob-lindsey.github.io/odin-restaurant-page/",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
