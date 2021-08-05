@@ -53,6 +53,7 @@ html {
 
 body {
     background-color: var(--grey-900);
+    height: 100%;
 }
 
 ul {
@@ -90,6 +91,7 @@ hr {
 #content {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 #container {
@@ -97,6 +99,7 @@ hr {
     width: 80%;
     max-width: 960px;
     min-height: 60vh;
+    height: 100%;
     margin: 0 auto;
     background-color: var(--grey-850);
 }
@@ -117,6 +120,8 @@ hr {
     margin-left: auto;
     margin-right: auto;
     line-height: 4;
+    position: sticky;
+    top: 0;
 }
 
 .nav li {
@@ -149,6 +154,12 @@ hr {
 
 /* HOME PAGE */
 
+#home-page {
+    font-size: 7rem;
+    text-align: center;
+    margin: auto 0;
+    color: var(--medium-emphasis);
+}
 
 
 /* MENU PAGE */
@@ -244,3 +255,62 @@ hr {
 }
 
 /* CONTACT PAGE */
+
+#contact-page {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+}
+
+.contact-header {
+    width: 100%;
+    color: var(--high-emphasis);
+    font-size: 2rem;
+    margin-bottom: 2%;
+    line-height: 4rem;
+    text-align: center;
+}
+
+.contact-section {
+    align-self: center;
+    margin-top: 3%;
+    width: 95%;
+    max-height: 25%;
+    flex: 1;
+    background-color: var(--grey-900);
+}
+
+.contact-section p {
+    color: var(--medium-emphasis);
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+#contact-email {
+    display: flex;
+    flex-direction: column;
+}
+
+.phone-text {
+
+}
+
+.address-text {
+
+}
+
+.email-text {
+    margin-bottom: 5%;
+}
+
+form {
+    margin: 0 auto;
+    width: 60%;
+    height: 15%;
+}
+
+#email {
+    width: 100%;
+    height: 100%;
+}
+
